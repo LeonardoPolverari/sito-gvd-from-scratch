@@ -1,7 +1,7 @@
 {
     "home" : {
         "label" :   "HOME",
-        "link"  :   "hero.html"
+        "link"  :   "index.html"
     },
     "chi_siamo" : {
         "label" :   "CHI SIAMO",

@@ -46,46 +46,16 @@
       <h1 class="hero-title">Il quarto giorno della settimana</h1>
       <p class="subtitle">Indie rock romano con cuore pop. Ascolta il brano, guarda il video, vieni al tour.</p>
 
-      <section class="panel">
-        <h2>Ascolta</h2>
-        <p>
-          Mettiamo qui i link alle piattaforme (Spotify, Apple Music, YouTube). Questo blocco scorre sopra la foto,
-          che resta ferma a fare da sfondo scenografico.
-        </p>
-        <a class="cta" href="#">Play su Spotify</a>
-      </section>
-
-      <section class="panel">
-        <h2>Guarda</h2>
-        <p>
-          Embed del video ufficiale o di una live session. Il testo continua a scorrere, l'immagine resta immobile in background.
-        </p>
-        <a class="cta" href="#">Video ufficiale</a>
-      </section>
-
-      <section class="panel">
-        <h2>Date</h2>
-        <p>
-          24/10 Roma (Largo Venue) · 08/11 Milano (Arci Bellezza) · 21/11 Torino (Hiroshima). Aggiungi altre date.
-        </p>
-        <a class="cta" href="#">Biglietti</a>
-      </section>
-
-      <section class="panel">
-        <h2>Newsletter</h2>
-        <p>Resta aggiornato su uscite e concerti.</p>
-        <form onsubmit="event.preventDefault(); alert('Grazie!');">
-          <label for="email" class="sr-only">Email</label>
-          <input id="email" name="email" type="email" placeholder="tua@email.it" required />
-          <button class="cta" type="submit">Iscriviti</button>
-        </form>
-      </section>
+      <div id="hero-panels" class="hero-panels" aria-live="polite">
+        <!-- I pannelli verranno popolati dinamicamente da js/hero-cards.js -->
+      </div>
 
       <footer>© Giovedì</footer>
     </main>
   </div>
 
 <script src="js/nav.js"></script>
+<script src="js/hero-cards.js"></script>
 
 </body>
 </html>

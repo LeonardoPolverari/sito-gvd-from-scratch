@@ -1,0 +1,26 @@
+[
+  {
+    "type": "card",
+    "title": "Ascolta",
+    "body": "Mettiamo qui i link alle piattaforme (Spotify, Apple Music, YouTube). Questo blocco scorre sopra la foto, che resta ferma a fare da sfondo scenografico.",
+    "cta": { "label": "Play su Spotify", "href": "#" }
+  },
+  {
+    "type": "card",
+    "title": "Guarda",
+    "body": "Embed del video ufficiale o di una live session. Il testo continua a scorrere, l'immagine resta immobile in background.",
+    "cta": { "label": "Video ufficiale", "href": "#" }
+  },
+  {
+    "type": "card",
+    "title": "Date",
+    "body": "24/10 Roma (Largo Venue) · 08/11 Milano (Arci Bellezza) · 21/11 Torino (Hiroshima). Aggiungi altre date.",
+    "cta": { "label": "Biglietti", "href": "#" }
+  },
+  {
+    "type": "newsletter",
+    "title": "Newsletter",
+    "body": "Resta aggiornato su uscite e concerti.",
+    "form": { "placeholder": "tua@email.it", "submitLabel": "Iscriviti" }
+  }
+]

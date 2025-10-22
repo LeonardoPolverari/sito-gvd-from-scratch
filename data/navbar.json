@@ -9,18 +9,18 @@
     },
     "date" : {
         "label" :   "DATE",
-        "link"  :   "hero.html"
+        "link"  :   "index.html"
     },
     "foto" : {
         "label" :   "FOTO",
-        "link"  :   "hero.html"
+        "link"  :   "index.html"
     },
     "shop" : {
         "label" :   "SHOP",
-        "link"  :   "hero.html"
+        "link"  :   "index.html"
     },
     "contattaci" : {
         "label" :   "CONTATTACI",
-        "link"  :   "hero.html"
+        "link"  :   "index.html"
     }
 }

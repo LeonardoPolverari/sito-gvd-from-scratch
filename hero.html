@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Giovedì — Home</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Rozha+One&display=swap" rel="stylesheet">
+
+  <!-- Foglio di stile esterno -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="home">
+
+  <!-- TOGGLE NAV (CSS-only) -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+
+  <!-- Pulsante hamburger (3 linee bianche sul lato destro) -->
+  <label class="hamburger" for="nav-toggle" aria-label="Apri menù" role="button">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="sr-only">Apri/Chiudi menù</span>
+  </label>
+
+  <!-- Backdrop cliccabile per chiudere -->
+  <label class="menu-backdrop" for="nav-toggle" aria-hidden="true"></label>
+
+  <!-- Drawer destro opaco -->
+  <!-- Drawer destro opaco -->
+  <aside class="side-drawer" aria-label="Menu laterale">
+    <nav id="main-nav" class="menu">
+    </nav>
+  </aside>
+
+
+  <!-- Logo/nome sempre visibile mentre il testo scorre -->
+  <div class="brand-fixed">
+    GIOVEDÌ
+  </div>
+
+  <!-- Strato scuro per contrasto; sotto c'è la foto fissa del body -->
+  <div class="backdrop">
+    <main class="content" aria-label="Contenuto principale">
+      <h1 class="hero-title">Il quarto giorno della settimana</h1>
+      <p class="subtitle">Indie rock romano con cuore pop. Ascolta il brano, guarda il video, vieni al tour.</p>
+
+      <section class="panel">
+        <h2>Ascolta</h2>
+        <p>
+          Mettiamo qui i link alle piattaforme (Spotify, Apple Music, YouTube). Questo blocco scorre sopra la foto,
+          che resta ferma a fare da sfondo scenografico.
+        </p>
+        <a class="cta" href="#">Play su Spotify</a>
+      </section>
+
+      <section class="panel">
+        <h2>Guarda</h2>
+        <p>
+          Embed del video ufficiale o di una live session. Il testo continua a scorrere, l'immagine resta immobile in background.
+        </p>
+        <a class="cta" href="#">Video ufficiale</a>
+      </section>
+
+      <section class="panel">
+        <h2>Date</h2>
+        <p>
+          24/10 Roma (Largo Venue) · 08/11 Milano (Arci Bellezza) · 21/11 Torino (Hiroshima). Aggiungi altre date.
+        </p>
+        <a class="cta" href="#">Biglietti</a>
+      </section>
+
+      <section class="panel">
+        <h2>Newsletter</h2>
+        <p>Resta aggiornato su uscite e concerti.</p>
+        <form onsubmit="event.preventDefault(); alert('Grazie!');">
+          <label for="email" class="sr-only">Email</label>
+          <input id="email" name="email" type="email" placeholder="tua@email.it" required />
+          <button class="cta" type="submit">Iscriviti</button>
+        </form>
+      </section>
+
+      <footer>© Giovedì</footer>
+    </main>
+  </div>
+
+<script src="js/nav.js"></script>
+
+</body>
+</html>

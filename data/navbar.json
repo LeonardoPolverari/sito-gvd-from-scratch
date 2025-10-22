@@ -1,0 +1,26 @@
+{
+    "home" : {
+        "label" :   "HOME",
+        "link"  :   "hero.html"
+    },
+    "chi_siamo" : {
+        "label" :   "CHI SIAMO",
+        "link"  :   "chi-siamo.html"
+    },
+    "date" : {
+        "label" :   "DATE",
+        "link"  :   "hero.html"
+    },
+    "foto" : {
+        "label" :   "FOTO",
+        "link"  :   "hero.html"
+    },
+    "shop" : {
+        "label" :   "SHOP",
+        "link"  :   "hero.html"
+    },
+    "contattaci" : {
+        "label" :   "CONTATTACI",
+        "link"  :   "hero.html"
+    }
+}

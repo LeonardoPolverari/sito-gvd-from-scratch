@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Giovedì — Chi siamo</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Rozha+One&display=swap" rel="stylesheet">
+
+  <!-- Foglio di stile esterno -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="chi-siamo">
+
+  <!-- TOGGLE NAV (CSS-only) -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+
+  <!-- Pulsante hamburger (3 linee bianche sul lato destro) -->
+  <label class="hamburger" for="nav-toggle" aria-label="Apri menù" role="button">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="sr-only">Apri/Chiudi menù</span>
+  </label>
+
+  <!-- Backdrop cliccabile per chiudere -->
+  <label class="menu-backdrop" for="nav-toggle" aria-hidden="true"></label>
+
+  <!-- Drawer destro opaco -->
+  <aside class="side-drawer" aria-label="Menu laterale">
+    <nav id="main-nav" class="menu">
+    </nav>
+  </aside>
+
+
+  <!-- Logo/nome sempre visibile mentre il testo scorre -->
+  <div class="brand-fixed">GIOVEDÌ</div>
+
+  <!-- Strato scuro per contrasto; sotto c'è la foto fissa del body -->
+  <div class="backdrop">
+    <main class="content" aria-label="Contenuto principale">
+      <h1 class="hero-title">Chi siamo</h1>
+      <p class="subtitle">La nostra storia</p>
+
+      <section class="panel">
+        <h2></h2>
+        <p>
+          Giovedì è una band indie rock/pop romana nata nel 2018. La nostra musica fonde melodie accattivanti con testi profondi,
+          creando un sound unico che riflette le nostre esperienze e emozioni.
+        </p>
+        <a class="cta" href="#">Play su Spotify</a>
+      </section>
+
+
+      <footer>© Giovedì</footer>
+    </main>
+  </div>
+
+<script src="js/nav.js"></script>
+
+</body>
+</html>

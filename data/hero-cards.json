@@ -12,10 +12,18 @@
     "cta": { "label": "Video ufficiale", "href": "#" }
   },
   {
-    "type": "card",
-    "title": "Date",
-    "body": "24/10 Roma (Largo Venue) · 08/11 Milano (Arci Bellezza) · 21/11 Torino (Hiroshima). Aggiungi altre date.",
+    "type": "event",
+    "title": "24/10 — Largo Venue, Roma",
+    "body": "Serata speciale con apertura di band locali.",
+    "meta": { "date": "2025-10-24", "time": "21:00", "venue": "Largo Venue", "price": "€12" },
     "cta": { "label": "Biglietti", "href": "#" }
+  },
+  {
+    "type": "merch",
+    "title": "Vinile in edizione limitata",
+    "body": "Copertina serigrafata, 300 copie numerate.",
+    "image": { "src": "images/vinile.jpg", "alt": "Vinile GIOVEDÌ", "position": "left" },
+    "cta": { "label": "Compra", "href": "#" }
   },
   {
     "type": "newsletter",

@@ -128,6 +128,40 @@ body.shop {
   color: var(--color-primary);
 }
 
+/* Panel variants: event meta, merch/image thumb and layout helpers */
+.panel__meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 12px;
+  margin-top: 12px;
+  color: var(--color-tertiary);
+  font-size: 14px;
+}
+.panel__meta dt { font-weight: 700; }
+.panel__meta dd { margin: 0 0 6px 0; }
+
+.panel__thumb {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+/* merch image to the left layout */
+.panel--media-left { display: flex; gap: 18px; align-items: flex-start; }
+.panel--media-left .panel__thumb { width: 140px; flex-shrink: 0; margin: 0; }
+
+/* event layout: grid with meta column on wider screens */
+@media (min-width: 800px) {
+  .panel--event { display: grid; grid-template-columns: 1fr 220px; gap: 20px; align-items: start; }
+  .panel--event .panel__meta { margin-top: 0; }
+}
+
+/* newsletter status */
+.panel__status { margin-top: 10px; color: var(--color-tertiary); font-size: 14px; }
+
 /* ===========================
    CTA BUTTONS
 =========================== */

@@ -18,12 +18,16 @@
   --hamburger-size: 34px;
   --hamburger-thickness: 2px;
   --hamburger-gap: 7px;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
 }
 /* ===========================
    RESET E STRUTTURA BASE
 =========================== */
 *, *::before, *::after { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
+html, body { height: 100%; margin: 0; overflow-x: hidden; }
 body {
   background-size: cover;
   background-position: center;
@@ -254,8 +258,8 @@ input[type="email"] {
 =========================== */
 .hamburger {
   position: fixed;
-  top: 24px;
-  right: 24px;                 /* lato destro */
+  top: calc(12px + var(--safe-top));
+  right: calc(12px + var(--safe-right));             /* lato destro */
   width: var(--hamburger-size);
   height: calc(var(--hamburger-thickness) * 3 + var(--hamburger-gap) * 2);
   display: grid;
@@ -264,6 +268,7 @@ input[type="email"] {
   cursor: pointer;
   z-index: 1100;
   -webkit-tap-highlight-color: transparent;
+
 }
 
 .hamburger .bar {
@@ -311,7 +316,7 @@ input[type="email"] {
 .side-drawer {
   position: fixed;
   top: 0;
-  right: calc(-1 * var(--drawer-width));
+  right: 0;
   width: var(--drawer-width);
   height: 100vh;
   background: var(--color-secondary);
@@ -323,10 +328,14 @@ input[type="email"] {
   display: flex;
   align-items: left;
   opacity: 0.75;
+  transform: translateX(100%);
+  transition: transform 260ms cubic-bezier(.4,0,.2,1);
+  will-change: transform;
 }
 
 .nav-toggle:checked ~ .side-drawer {
   right: 0;
+  transform: translateX(0);
 }
 
 /* ===========================
@@ -381,4 +390,110 @@ input[type="email"] {
 =========================== */
 @media (max-width: 600px) {
   .panel { padding: 18px; }
+}
+
+/* Sidebar / drawer: mobile-friendly tweaks */
+@media (max-width: 800px) {
+  /* make the drawer act as a full-screen overlay on mobile */
+  .side-drawer {
+    width: 100vw;
+    right: 0;
+    height: 100vh;
+    padding: 0; /* inner padding handled by .menu */
+    opacity: 1; /* keep it visible (backdrop handles dim) */
+    box-shadow: none; /* overlay style */
+    transform: translateX(100%);
+  }
+
+  .nav-toggle:checked ~ .side-drawer {
+    transform: translateX(0);
+  }
+
+  /* allow scrolling inside the drawer and smooth touch scrolling */
+  .side-drawer {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* bigger, easier-to-tap menu items */
+  .menu {
+    padding: 88px 24px 40px;
+    gap: 14px;
+  }
+
+  .menu a {
+    font-size: 20px;
+    padding: 16px 8px;
+    display: block;
+  }
+
+  /* increase hamburger hit area */
+  .hamburger {
+    top: calc(12px + var(--safe-top));
+    right: calc(12px + var(--safe-right));
+    padding: 6px;
+    box-sizing: border-box;
+    z-index: 1200;
+  }
+
+  /* prevent background scrolling when drawer is open by locking the backdrop container */
+  .nav-toggle:checked ~ .backdrop {
+    height: 100vh;
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  /* slightly darker backdrop on small screens for better contrast */
+  .nav-toggle:checked ~ .menu-backdrop {
+    background: rgba(0,0,0,0.6);
+  }
+
+  /* Fix background behaviour on mobile: avoid fixed attachment which is problematic on some devices */
+  body {
+    background-attachment: scroll;
+    background-position: center top;
+    -webkit-background-attachment: scroll;
+  }
+
+  /* Reduce hero spacing so content doesn't get hidden behind header on small screens */
+  .content {
+    padding: 10vh 16px 12vh;
+  }
+
+  /* Make hero titles more reasonable on small screens */
+  .hero-title {
+    font-size: clamp(28px, 8.5vw, 64px);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  /* Brand smaller and out of the way on mobile */
+  .brand-fixed {
+    top: 12px;
+    left: 12px;
+    font-size: clamp(14px, 3.6vw, 18px);
+    z-index: 1005; /* below hamburger but above backdrop */
+  }
+
+  /* Make hamburger more visible and larger hit area */
+  .hamburger {
+    background: rgba(0,0,0,0.22);
+    border-radius: 8px;
+    padding: 8px;
+    transform: none;
+  }
+  .hamburger:focus-visible { outline: 2px solid rgba(255,255,255,0.12); }
+
+  /* ensure hamburger is on top of brand and other elements */
+  .hamburger { z-index: 1300; }
+
+  /* Ensure main backdrop overlay sits below the hamburger */
+  .menu-backdrop { z-index: 800; }
+}
+
+@media (min-width: 801px) {
+  .hamburger {
+    top:  calc(24px + var(--safe-top));
+    right: calc(24px + var(--safe-right)); /* prima erano 12px: ora più dentro */
+  }
 }

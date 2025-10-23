@@ -14,46 +14,79 @@
       const frag = document.createDocumentFragment();
 
       for (const item of items) {
-        if (item.type === 'card') {
-          const section = document.createElement('section');
-          section.className = 'panel';
+        const type = (item.type || 'card').toLowerCase();
+        const section = document.createElement('section');
+        section.className = 'panel panel--' + type + (item.classes ? ' ' + item.classes : '');
 
-          const h2 = document.createElement('h2');
-          h2.textContent = item.title || '';
-          section.appendChild(h2);
-
-          const p = document.createElement('p');
-          p.textContent = item.body || '';
-          section.appendChild(p);
-
-          if (item.cta) {
-            const a = document.createElement('a');
-            a.className = 'cta';
-            a.href = item.cta.href || '#';
-            a.textContent = item.cta.label || 'Apri';
-            section.appendChild(a);
+        // image (merch/media)
+        if (item.image) {
+          const img = document.createElement('img');
+          img.className = 'panel__thumb';
+          img.src = item.image.src || '';
+          img.alt = item.image.alt || '';
+          img.loading = 'lazy';
+          if ((item.image.position || '').toLowerCase() === 'left') {
+            section.classList.add('panel--media-left');
+            section.appendChild(img); // thumb before content
+          } else {
+            section.appendChild(img);
           }
+        }
 
-          frag.appendChild(section);
-        } else if (item.type === 'newsletter') {
-          const section = document.createElement('section');
-          section.className = 'panel';
+        // title + body
+        const h2 = document.createElement('h2');
+        h2.textContent = item.title || '';
+        section.appendChild(h2);
 
-          const h2 = document.createElement('h2');
-          h2.textContent = item.title || 'Newsletter';
-          section.appendChild(h2);
-
+        if (item.body) {
           const p = document.createElement('p');
-          p.textContent = item.body || '';
+          p.textContent = item.body;
           section.appendChild(p);
+        }
 
+        // event meta (dl)
+        if (type === 'event' && item.meta) {
+          const dl = document.createElement('dl');
+          dl.className = 'panel__meta';
+          const pushMeta = (labelText, value) => {
+            if (!value) return;
+            const dt = document.createElement('dt'); dt.textContent = labelText; dl.appendChild(dt);
+            const dd = document.createElement('dd'); dd.textContent = value; dl.appendChild(dd);
+          };
+          pushMeta('Data', item.meta.date);
+          pushMeta('Ora', item.meta.time);
+          pushMeta('Luogo', item.meta.venue);
+          pushMeta('Prezzo', item.meta.price);
+          section.appendChild(dl);
+        }
+
+        // CTA
+        if (item.cta) {
+          const a = document.createElement('a');
+          a.className = 'cta';
+          a.href = item.cta.href || '#';
+          a.textContent = item.cta.label || 'Apri';
+          if (item.cta.target) a.target = item.cta.target;
+          if (item.cta.rel) a.rel = item.cta.rel;
+          section.appendChild(a);
+        }
+
+        // newsletter handling
+        if (type === 'newsletter') {
+          // replace CTA with form if form provided
           const form = document.createElement('form');
+          form.className = 'panel__newsletter';
           form.addEventListener('submit', function (e) {
             e.preventDefault();
             const input = form.querySelector('input[type="email"]');
             const email = input && input.value;
-            // qui si potrebbe chiamare un endpoint serverless per registrare l'email
-            alert(email ? 'Grazie, registrato: ' + email : 'Inserisci un indirizzo email');
+            const status = form.querySelector('.panel__status');
+            if (!email) {
+              if (status) status.textContent = 'Inserisci un indirizzo valido';
+              return;
+            }
+            // placeholder: qui chiameresti un endpoint reale
+            if (status) status.textContent = 'Grazie! Controlla la tua email.';
             form.reset();
           });
 
@@ -77,9 +110,15 @@
           btn.textContent = (item.form && item.form.submitLabel) || 'Iscriviti';
           form.appendChild(btn);
 
+          const status = document.createElement('div');
+          status.className = 'panel__status';
+          status.setAttribute('role', 'status');
+          form.appendChild(status);
+
           section.appendChild(form);
-          frag.appendChild(section);
         }
+
+        frag.appendChild(section);
       }
 
       container.innerHTML = '';
